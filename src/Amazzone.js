@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import home from './components/home';
+import home from './components/home/home';
 import MainTemplate from './components/mainLayout/template/mainTemplate';
 
 export default class Amazzone extends Component {
