@@ -4,15 +4,15 @@ import {
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
 import PropTypes from 'prop-types';
-
+import cardsCss from '../css/cards/cards.css';
 
 export default class CustomCard extends Component{
     render(){
         return(
-        <div>
-        <Card style={{width:200}}>
+        <div className="div-cards">
+        <Card className="card-bg">
           <CardImg top width="100%" src={this.props.imgRef}/>
-          <CardBody>
+          <CardBody className="card-bd">
             <CardTitle>{this.props.titolo}</CardTitle>
             <CardSubtitle>{this.props.subtitle}</CardSubtitle>
             <CardText>{this.props.description}</CardText>
@@ -26,7 +26,7 @@ export default class CustomCard extends Component{
 Card.propTypes = {
     // Pass in a Component to override default element
     imgRef: PropTypes.string,
-    titolo: PropTypes.oneOfType([PropTypes.func, PropTypes.string]).isRequired,
+    titolo: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
     subtitle: PropTypes.string,
     description: PropTypes.string,
     body: PropTypes.bool,

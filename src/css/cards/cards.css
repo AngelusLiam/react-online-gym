@@ -1,0 +1,15 @@
+.div-card {
+    padding: 20px;
+}
+
+.card-bg {
+    width: 200px;
+    height: 300px;
+}
+
+.card-bd {
+    padding: 0%;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    text-align: center;
+}
