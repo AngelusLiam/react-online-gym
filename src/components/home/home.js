@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import CarouselCSS from '../../css/carousel/carousel.css'
 import FirstSlideImage from '../../images/uffici1.jpg'
 import SecondSlideImage from '../../images/uffici2.jpg'
