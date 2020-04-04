@@ -27,19 +27,19 @@ export default class CustomCard extends Component{
     render(){
         return(
           <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
-        <Card className="card-bg">
+        <Card className="card-bg" onMouseEnter={this.handleFlip}>
           <CardImg top width="100%" src={this.props.imgRef}/>
           <CardBody className="card-bd d-flex flex-column">
             <CardTitle>{this.props.titolo}</CardTitle>
             <CardSubtitle>{this.props.subtitle}</CardSubtitle>
-            <Button className="mt-auto" onClick={this.handleFlip}>Altro</Button>
+            {/*<Button className="mt-auto" onClick={this.handleFlip}>Altro</Button>*/}
           </CardBody>
         </Card>
 
-        <Card className="card-bg">
+        <Card className="card-bg" onMouseLeave={this.handleFlip}>
           <CardBody className="card-bd d-flex flex-column">
             <CardText>{this.props.description}</CardText>
-            <Button className="mt-auto" onClick={this.handleFlip}>Altro</Button>
+            {/*<Button className="mt-auto" onClick={this.handleFlip}>Altro</Button>*/}
           </CardBody>
         </Card>
 
