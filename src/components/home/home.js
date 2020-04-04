@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import CarouselCSS from '../../css/carousel/carousel.css'
-import FirstSlideImage from '../../images/uffici1.jpg'
-import SecondSlideImage from '../../images/uffici2.jpg'
-import ThirdSlideImage from '../../images/uffici3.jpg'
+import FirstSlideImage from '../../images/img1.jpg'
+import SecondSlideImage from '../../images/img2.jpeg'
+import ThirdSlideImage from '../../images/img3.jpg'
 
 
 
 export default class Home extends Component{
     render(){
         return(
+          <div>
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
             <ol className="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -35,6 +36,14 @@ export default class Home extends Component{
               <span className="sr-only">Next</span>
             </a>
           </div>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 text-center">
+          <h2>I nostri prodotti</h2>
+          </div>
+          </div>
+        </div>
+        </div>
         )
     }
 }

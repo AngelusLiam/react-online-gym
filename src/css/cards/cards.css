@@ -13,3 +13,13 @@
     overflow-wrap: break-word;
     text-align: center;
 }
+
+.btn-secondary {
+    background-color: lightgreen;
+    border-color: lime;
+}
+
+.btn-secondary:hover{
+    background-color: mediumspringgreen;
+    color: black;
+}

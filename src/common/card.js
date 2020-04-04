@@ -5,20 +5,45 @@ import {
   } from 'reactstrap';
 import PropTypes from 'prop-types';
 import cardsCss from '../css/cards/cards.css';
+import ReactCardFlip from 'react-card-flip';
 
 export default class CustomCard extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      isFlipped:false
+    }
+    this.handleFlip = this.handleFlip.bind(this);
+  }
+    handleFlip(e){
+      e.preventDefault();
+      if(this.state.isFlipped){
+        this.setState({isFlipped:false})
+      } else {
+        this.setState({isFlipped:true})
+      }
+    }
+
     render(){
         return(
-        <div className="div-cards">
+          <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
         <Card className="card-bg">
           <CardImg top width="100%" src={this.props.imgRef}/>
-          <CardBody className="card-bd">
+          <CardBody className="card-bd d-flex flex-column">
             <CardTitle>{this.props.titolo}</CardTitle>
             <CardSubtitle>{this.props.subtitle}</CardSubtitle>
-            <CardText>{this.props.description}</CardText>
+            <Button className="mt-auto" onClick={this.handleFlip}>Altro</Button>
           </CardBody>
         </Card>
-      </div>
+
+        <Card className="card-bg">
+          <CardBody className="card-bd d-flex flex-column">
+            <CardText>{this.props.description}</CardText>
+            <Button className="mt-auto" onClick={this.handleFlip}>Altro</Button>
+          </CardBody>
+        </Card>
+
+      </ReactCardFlip>
         )
     }
 }
