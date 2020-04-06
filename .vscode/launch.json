@@ -9,7 +9,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/src/Amazzone.js",
+            "program": "${workspaceFolder}/src/TestReact.js",
             "skipFiles": [
                 "<node_internals>/**"
             ]

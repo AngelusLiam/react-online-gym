@@ -1,14 +1,14 @@
 import axios from 'axios'
 
-function getData(){
-    axios.get('https://jsonplaceholder.typicode.com/posts')
-    .then(result => {
-        console.log("Rest success: " + result.data);
-        return result.data
-    }, error => {
-        console.log("Rest Failed" + error.data);
-        return error.data
-    })
+export default class ListService{
+        getListData(onResponse, onFailure){
+            axios.get('https://jsonplaceholder.typicode.com/posts')
+            .then(result =>{
+                console.log("Rest code: " + result.status);
+                onResponse(result.data);
+            }, error =>{
+                console.log("Rest code: " + error.status);
+                onFailure(error.status);
+            })
+        }
 }
-
-export default getData

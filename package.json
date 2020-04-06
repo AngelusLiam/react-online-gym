@@ -1,5 +1,5 @@
 {
-  "name": "amazzone",
+  "name": "TestReact",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +14,8 @@
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
+    "react-bootstrap-table-next": "^4.0.0",
+    "react-bootstrap-table2-paginator": "^2.1.2",
     "react-card-flip": "^1.0.10",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.1.2",

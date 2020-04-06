@@ -1,23 +1,62 @@
-import React, { Component, useState } from 'react'
+import React, { Component} from 'react'
 import CarouselCSS from '../../css/home/carousel/carousel.css'
 import HomeCss from '../../css/home/home.css'
 import FirstSlideImage from '../../images/img1.jpg'
 import SecondSlideImage from '../../images/img2.jpeg'
 import ThirdSlideImage from '../../images/img3.jpg'
 import { Button } from 'react-bootstrap'
-import axios from 'axios'
+import TableBootstrap from '../../common/bootstraptable'
+import ListService from '../../service/homeService/ListService'
+import BootstrapTable from 'react-bootstrap-table-next'
+import { Table } from 'react-bootstrap'
+import paginationFactory from 'react-bootstrap-table2-paginator';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
 
-function Home(){
-  const [contatore, setContatore] = useState(0);
-  const [restData, setRestData] = useState([]);
+export default class Home extends Component{
+  constructor(props){
+    super(props);
+    this.listService = new ListService() 
+    this.state = {
+      contatore: 0,
+      listData: [],
+      showTable: false,
+    };
+  }
 
-  React.useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users")
-    .then(response => setRestData(response.data));
-    console.log("Rest OK: " + restData);
-}, []);
+  componentDidMount(){
+  this.listService.getListData(
+    this.onResponse.bind(this),
+    this.onFailure.bind(this)
+    )
+  }
 
+  onResponse(result){
+    console.log("REST OK: " + result)
+    this.setState({listData: result});
+  }
+
+  onFailure(error){
+    console.log("REST FAILED: " + error)
+    this.setState({listData: null})
+  }
+
+  aumentaCounter(){
+    this.setState({contatore: this.state.contatore+1})
+  }
+
+    render(){
+      const products = [];
+        const columns = [{
+        dataField: 'id',
+        text: 'ID'
+        }, {
+        dataField: 'title',
+        text: 'Titolo'
+        }, {
+        dataField: 'body',
+        text: 'Descrizione'
+        }];
 
         return(
           <div>
@@ -51,16 +90,15 @@ function Home(){
           <div className="row">
             <div className="col-12 text-center">
           <h1>Contatore con hook</h1>
-          <counter>{contatore}</counter><br/>
-          <Button className="btn-counter" onClick={() =>  setContatore(contatore + 1)}>Cliccami</Button>
+          <counter>{this.state.contatore}</counter><br/>
+          <Button className="btn-counter" onClick={this.aumentaCounter.bind(this)}>Cliccami</Button>
             <div className="list-name">
-                <ul>{restData.map(data => <li>{data.name}</li>)}</ul>
+        <BootstrapTable keyField='id' data={ this.state.listData } columns={ columns } pagination={paginationFactory()}/>
               </div>
           </div>
           </div>
         </div>
         </div>
         )
+    }
 }
-
-export default Home
