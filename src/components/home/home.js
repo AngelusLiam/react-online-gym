@@ -1,13 +1,24 @@
-import React, { Component } from 'react'
-import CarouselCSS from '../../css/carousel/carousel.css'
+import React, { Component, useState } from 'react'
+import CarouselCSS from '../../css/home/carousel/carousel.css'
+import HomeCss from '../../css/home/home.css'
 import FirstSlideImage from '../../images/img1.jpg'
 import SecondSlideImage from '../../images/img2.jpeg'
 import ThirdSlideImage from '../../images/img3.jpg'
+import { Button } from 'react-bootstrap'
+import axios from 'axios'
 
 
+function Home(){
+  const [contatore, setContatore] = useState(0);
+  const [restData, setRestData] = useState([]);
 
-export default class Home extends Component{
-    render(){
+  React.useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then(response => setRestData(response.data));
+    console.log("Rest OK: " + restData);
+}, []);
+
+
         return(
           <div>
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -39,11 +50,17 @@ export default class Home extends Component{
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
-          <h2>I nostri prodotti</h2>
+          <h1>Contatore con hook</h1>
+          <counter>{contatore}</counter><br/>
+          <Button className="btn-counter" onClick={() =>  setContatore(contatore + 1)}>Cliccami</Button>
+            <div className="list-name">
+                <ul>{restData.map(data => <li>{data.name}</li>)}</ul>
+              </div>
           </div>
           </div>
         </div>
         </div>
         )
-    }
 }
+
+export default Home
