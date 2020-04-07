@@ -2,16 +2,38 @@ import React, { Component } from 'react'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
 import BootstrapTable from 'react-bootstrap-table-next'
 import { Table } from 'react-bootstrap'
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
+import paginationFactory from 'react-bootstrap-table2-paginator'
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css'
+import ListService from '../service/homeService/ListService'
+import HomeTableCss from '../css/home/tables/homeTable.css'
 
 export default class TableBootstrap extends Component{
     constructor(props){
         super(props);
+        this.listService = new ListService()
+        this.state = {
+            listData: [],
+        }
     }
 
+    componentDidMount(){
+        this.listService.getListData(
+          this.onResponse.bind(this),
+          this.onFailure.bind(this)
+          )
+        }
+      
+        onResponse(result){
+          console.log("REST TABLE OK: " + result)
+          this.setState({listData: result});
+        }
+      
+        onFailure(error){
+          console.log("REST TABLE FAILED: " + error)
+          this.setState({listData: null})
+        }
+
     render(){    
-        const products = [];
         const columns = [{
         dataField: 'id',
         text: 'ID'
@@ -24,7 +46,9 @@ export default class TableBootstrap extends Component{
         }];
 
         return(
-            <BootstrapTable keyField='id' data={ products } columns={ columns } />
+            <div>
+            <BootstrapTable keyField='id' data={ this.state.listData } columns={ columns } pagination={paginationFactory()} /> 
+            </div>
         )
     }
 }

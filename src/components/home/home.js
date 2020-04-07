@@ -6,7 +6,6 @@ import SecondSlideImage from '../../images/img2.jpeg'
 import ThirdSlideImage from '../../images/img3.jpg'
 import { Button } from 'react-bootstrap'
 import TableBootstrap from '../../common/bootstraptable'
-import ListService from '../../service/homeService/ListService'
 import BootstrapTable from 'react-bootstrap-table-next'
 import { Table } from 'react-bootstrap'
 import paginationFactory from 'react-bootstrap-table2-paginator';
@@ -16,33 +15,23 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 export default class Home extends Component{
   constructor(props){
     super(props);
-    this.listService = new ListService() 
     this.state = {
       contatore: 0,
-      listData: [],
       showTable: false,
     };
-  }
-
-  componentDidMount(){
-  this.listService.getListData(
-    this.onResponse.bind(this),
-    this.onFailure.bind(this)
-    )
-  }
-
-  onResponse(result){
-    console.log("REST OK: " + result)
-    this.setState({listData: result});
-  }
-
-  onFailure(error){
-    console.log("REST FAILED: " + error)
-    this.setState({listData: null})
+    this.btnShowTable = this.btnShowTable.bind(this)
   }
 
   aumentaCounter(){
     this.setState({contatore: this.state.contatore+1})
+  }
+
+  btnShowTable(){
+    if(this.state.showTable){
+      this.setState({showTable:false})
+    } else {
+      this.setState({showTable:true})
+    }
   }
 
     render(){
@@ -93,7 +82,8 @@ export default class Home extends Component{
           <counter>{this.state.contatore}</counter><br/>
           <Button className="btn-counter" onClick={this.aumentaCounter.bind(this)}>Cliccami</Button>
             <div className="list-name">
-        <BootstrapTable keyField='id' data={ this.state.listData } columns={ columns } pagination={paginationFactory()}/>
+        <Button onClick={this.btnShowTable}>Mostra Tabella</Button>
+        {this.state.showTable? <TableBootstrap/> : false}
               </div>
           </div>
           </div>

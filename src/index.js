@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import TestReact from './TestReact';
 import * as serviceWorker from './utils/serviceWorker';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
