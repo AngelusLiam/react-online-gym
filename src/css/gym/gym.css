@@ -1,0 +1,55 @@
+
+.todo-list {
+    background-color: white;
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid gainsboro;
+    border-radius: 40px 40px 40px 40px;
+    -moz-border-radius: 40px 40px 40px 40px;
+    -webkit-border-radius: 40px 40px 40px 40px;
+    box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
+    padding: 30px;
+    margin-top: 50px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 30px 20px 0px;
+    border-bottom: 1px solid gray;
+    font-weight: 100;
+    font-size: 15;
+    width: 70%;
+    color: #333333;
+}
+
+input[type=checkbox] {
+    margin-right: 10px;
+}
+
+.custom-img {
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: center;
+}
+
+.in-search {
+    width: fit-content;
+    margin-right: 20px;
+    margin-left: auto;
+    margin-top: 20px;
+    display: flex;
+    padding: 20px;
+}
