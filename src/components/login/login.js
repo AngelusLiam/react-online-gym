@@ -16,6 +16,7 @@ export default class Login extends Component{
             successMessage: '',
             failureMessage: '',
             missingFields: false,
+            isLoggedIn: false,
         }
     }
 
@@ -55,7 +56,8 @@ export default class Login extends Component{
                 showSuccess:true,
                 successMessage: 'Login avvenuto con successo...',
                 showFailure: false,
-                failureMessage: ''
+                failureMessage: '',
+                isLoggedIn: true,
             }
         )
     }
@@ -74,7 +76,8 @@ export default class Login extends Component{
                 showSuccess: false,
                 successMessage: '',
                 showFailure: true,
-                failureMessage: '' + error
+                failureMessage: '' + error,
+                isLoggedIn: false,
             }
         )
     }
@@ -87,12 +90,24 @@ export default class Login extends Component{
         }
     }
 
+    isUserLogged(){
+        if(this.state.isLoggedIn){
+            return <p>Yes!</p>
+        } else {
+            return <p>No!</p>
+        }
+    }
+
     render(){
         let successMessage = this.onShowSuccessMessage();
         let failureMessage = this.onShowFailureMessage();
         let missingValues = this.onMissingValues();
+        let isUserLogged = this.isUserLogged();
         return(
             <div className="container-form">
+                <div>
+                    <p>Utente loggato: {isUserLogged}</p>
+                </div>
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <div className="form-group">
                         <TextField className="input-pos" variant="outlined" label="Email" value={this.state.email} onChange={this.changeText.bind(this, 'email')} type="text" placeholder="Inserisci email"/>

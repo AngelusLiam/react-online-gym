@@ -5,7 +5,7 @@ import FooterCss from '../../../css/footer/footer.css';
 export default class Footer extends Component{
     render(){
         return(
-            <div className='container-fluid footer fixed-bottom'>
+            <div className='container-fluid footer'>
                 <div className="icons">
                             <a href="https://www.facebook.com/angelusliam/" target="_blank">
                             <i className = "fa fa-facebook-official fa-2x"></i>

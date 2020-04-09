@@ -12,11 +12,30 @@ function Gym(){
     const[search, setSearch] = useState('')
     const[restData, setRestData] = useState([])
     const[sortValue, setSortValue] = useState(1)
+    const[isLogged, setIsLogged] = useState(false)
 
     React.useEffect(() => { 
         axios.get("https://jsonplaceholder.typicode.com/photos").then(result => setRestData(result.data))
         console.log(restData)
     }, [])
+
+    const returnIsLogged = () => {
+        if(isLogged){
+            return <div>Utente Loggato</div>
+        } else {
+            return <div>Utente non loggato</div>
+        }
+    }
+
+    const handleLogin = () => {
+        if(isLogged){
+            setIsLogged(false)
+        } else {
+            setIsLogged(true)
+        }
+    }
+
+    const txtLogged = returnIsLogged();
 
     const filteredName = restData.filter(data => data.title.includes(search))
     const fromFetch = filteredName.map(data => <CustomImageInfo key={data.id} urlImg={data.url} name={data.title} albumId={data.albumId}/>).slice(0, 10)
@@ -27,10 +46,11 @@ function Gym(){
         <div className="container-two-sides">
                 <div className='lateral-right'>
                     <div className="row-lat">
-                        <TextField type="text" label="Cerca" value={search} onChange={e => setSearch(e.target.value)}/>
-                    </div>
                     <div>
-                        <Button>Ordina per Nome</Button>
+                        <Button onClick={handleLogin}>Loggati</Button>
+                        {txtLogged}
+                    </div>
+                        <TextField type="text" label="Cerca" value={search} onChange={e => setSearch(e.target.value)}/>
                     </div>
                     {/*} WIP SORT
                     <div className="row-lat">
