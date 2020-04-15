@@ -1,5 +1,18 @@
 .container-form {
-    margin: 0 auto;
-    margin-top: 50px;
-    text-align: center;
+    width: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-form {
+    margin: 10px;
+}
+
+.text-field-form{
+    display: flex;
+}
+
+.single-field {
+    padding: 15px;
 }

@@ -46,7 +46,7 @@ export default class TableBootstrap extends Component{
         }];
 
         return(
-            <div>
+            <div className="table-bss" >
             <BootstrapTable keyField='id' data={ this.state.listData } columns={ columns } pagination={paginationFactory()} /> 
             </div>
         )

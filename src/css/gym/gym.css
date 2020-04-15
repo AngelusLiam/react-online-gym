@@ -33,10 +33,6 @@
     color: #333333;
 }
 
-input[type=checkbox] {
-    margin-right: 10px;
-}
-
 .custom-img {
     width: min-content;
     display: flex;

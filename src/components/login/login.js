@@ -3,6 +3,7 @@ import LoginCss from '../../css/login/login.css'
 import LoginService from '../../service/LoginService';
 import { Button } from 'react-bootstrap';
 import { TextField } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export default class Login extends Component{
     constructor(props){
@@ -92,9 +93,9 @@ export default class Login extends Component{
 
     isUserLogged(){
         if(this.state.isLoggedIn){
-            return <p>Yes!</p>
+            return <div>Yes!</div>
         } else {
-            return <p>No!</p>
+            return <div>No!</div>
         }
     }
 
@@ -116,7 +117,10 @@ export default class Login extends Component{
                         <TextField className="input-pos" variant="outlined" label="Password" value={this.state.password} onChange={this.changeText.bind(this, 'password')} type="password" placeholder="Inserisci email"/>
                     </div>
                     <div className="form-group">
-                        <Button onClick={this.login.bind(this)}>Login</Button>
+                            <Button className="btn-form" onClick={this.login.bind(this)}>Login</Button>
+                            <Link to="/registrati">
+                            <Button className="btn-form">Registrati</Button>
+                            </Link>
                     </div>
                     {successMessage}
                     {failureMessage}

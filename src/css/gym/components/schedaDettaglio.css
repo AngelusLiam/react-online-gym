@@ -1,0 +1,30 @@
+.container-dettaglio {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: auto;
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px;
+}
+
+.container-dettaglio > img {
+    width: 100%;
+    height: auto;
+}
+
+.img-back {
+    width:50px;
+    height: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+    position: absolute;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+
+.img-back:hover {
+    opacity: 1;
+    width: 65px;
+    height: 65px;
+}

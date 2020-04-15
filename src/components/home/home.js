@@ -16,14 +16,9 @@ export default class Home extends Component{
   constructor(props){
     super(props);
     this.state = {
-      contatore: 0,
-      showTable: false,
+          showTable: false,
     };
     this.btnShowTable = this.btnShowTable.bind(this)
-  }
-
-  aumentaCounter(){
-    this.setState({contatore: this.state.contatore+1})
   }
 
   btnShowTable(){
@@ -46,6 +41,7 @@ export default class Home extends Component{
         dataField: 'body',
         text: 'Descrizione'
         }];
+
 
         return(
           <div>
@@ -78,9 +74,6 @@ export default class Home extends Component{
         <div className="container">
           <div className="row">
             <div className="col-12 text-center">
-          <h1>Contatore con hook</h1>
-          <counter>{this.state.contatore}</counter><br/>
-          <Button className="btn-counter" onClick={this.aumentaCounter.bind(this)}>Cliccami</Button>
             <div className="list-name">
         <Button onClick={this.btnShowTable}>Mostra Tabella</Button>
         {this.state.showTable? <TableBootstrap/> : false}
