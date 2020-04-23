@@ -1,3 +1,9 @@
 .table-bss {
     padding: 20px;
 }
+
+.react-bootstrap-table{
+    position: relative;
+    height: 300px;
+    overflow: auto;
+}

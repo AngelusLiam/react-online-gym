@@ -30,18 +30,6 @@ export default class Home extends Component{
   }
 
     render(){
-      const products = [];
-        const columns = [{
-        dataField: 'id',
-        text: 'ID'
-        }, {
-        dataField: 'title',
-        text: 'Titolo'
-        }, {
-        dataField: 'body',
-        text: 'Descrizione'
-        }];
-
 
         return(
           <div>

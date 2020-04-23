@@ -20,6 +20,8 @@ function Gym(){
         .then(result => {
             setRestData(result.data); 
             setIsLoading(false);
+        }).catch(error => {
+            console.log(error);
         });
     }, [])
 
